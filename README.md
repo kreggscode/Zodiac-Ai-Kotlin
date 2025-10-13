@@ -46,6 +46,66 @@ Welcome to **ZodiacAI Finder** - where ancient wisdom meets cutting-edge AI tech
 | **👤 Personal Profile** | **🤖 AI Astrologer Chat** | **📚 Complete Encyclopedia** |
 | Saved birth data & analysis | Context-aware guidance | Zodiac, Tarot, Crystals & more |
 
+---
+
+## 📱 **Complete App Screenshots**
+
+<div align="center">
+
+### **🏠 Home & Navigation**
+
+| ![Home Dashboard](https://raw.githubusercontent.com/kreggscode/Zodiac-Ai-Kotlin/main/Screenshots/Screenshot_20251014_025613.png) | ![Horoscope View](https://raw.githubusercontent.com/kreggscode/Zodiac-Ai-Kotlin/main/Screenshots/Screenshot_20251014_025623.png) | ![Birth Chart](https://raw.githubusercontent.com/kreggscode/Zodiac-Ai-Kotlin/main/Screenshots/Screenshot_20251014_025635.png) |
+|:---:|:---:|:---:|
+| **Cosmic Dashboard** | **AI Horoscopes** | **Birth Chart Analysis** |
+
+### **💕 Compatibility & Relationships**
+
+| ![Compatibility Main](https://raw.githubusercontent.com/kreggscode/Zodiac-Ai-Kotlin/main/Screenshots/Screenshot_20251014_025640.png) | ![Compatibility Analysis](https://raw.githubusercontent.com/kreggscode/Zodiac-Ai-Kotlin/main/Screenshots/Screenshot_20251014_025652.png) |
+|:---:|:---:|
+| **Sign Selection** | **Detailed Analysis** |
+
+### **🎴 Tarot Encyclopedia**
+
+| ![Tarot Cards](https://raw.githubusercontent.com/kreggscode/Zodiac-Ai-Kotlin/main/Screenshots/Screenshot_20251014_025658.png) | ![Tarot Details](https://raw.githubusercontent.com/kreggscode/Zodiac-Ai-Kotlin/main/Screenshots/Screenshot_20251014_025738.png) |
+|:---:|:---:|
+| **78 Tarot Cards** | **Card Interpretations** |
+
+### **🖐️ Palm Reading**
+
+| ![Palm Reading](https://raw.githubusercontent.com/kreggscode/Zodiac-Ai-Kotlin/main/Screenshots/Screenshot_20251014_025742.png) | ![Palm Analysis](https://raw.githubusercontent.com/kreggscode/Zodiac-Ai-Kotlin/main/Screenshots/Screenshot_20251014_025749.png) |
+|:---:|:---:|
+| **Palm Reading** | **AI Analysis Results** |
+
+### **👤 Profile & Personal Data**
+
+| ![Profile Setup](https://raw.githubusercontent.com/kreggscode/Zodiac-Ai-Kotlin/main/Screenshots/Screenshot_20251014_025757.png) | ![Profile Analysis](https://raw.githubusercontent.com/kreggscode/Zodiac-Ai-Kotlin/main/Screenshots/Screenshot_20251014_025803.png) |
+|:---:|:---:|
+| **Birth Data Entry** | **Personal Analysis** |
+
+### **🤖 AI Chat Interface**
+
+| ![Chat Interface](https://raw.githubusercontent.com/kreggscode/Zodiac-Ai-Kotlin/main/Screenshots/Screenshot_20251014_025746.png) | ![Chat Conversations](https://raw.githubusercontent.com/kreggscode/Zodiac-Ai-Kotlin/main/Screenshots/Screenshot_20251014_025816.png) |
+|:---:|:---:|
+| **AI Astrologer** | **Contextual Responses** |
+
+### **📚 Complete Encyclopedia**
+
+| ![Zodiac Encyclopedia](https://raw.githubusercontent.com/kreggscode/Zodiac-Ai-Kotlin/main/Screenshots/Screenshot_20251014_025809.png) | ![Detailed Information](https://raw.githubusercontent.com/kreggscode/Zodiac-Ai-Kotlin/main/Screenshots/Screenshot_20251014_025829.png) |
+|:---:|:---:|
+| **Zodiac Signs** | **Sign Details** |
+
+### **🌙 Additional Features**
+
+| ![Moon Phases](https://raw.githubusercontent.com/kreggscode/Zodiac-Ai-Kotlin/main/Screenshots/Screenshot_20251014_025842.png) | ![Crystal Guide](https://raw.githubusercontent.com/kreggscode/Zodiac-Ai-Kotlin/main/Screenshots/Screenshot_20251014_025856.png) | ![Additional Info](https://raw.githubusercontent.com/kreggscode/Zodiac-Ai-Kotlin/main/Screenshots/Screenshot_20251014_025902.png) |
+|:---:|:---:|:---:|
+| **Lunar Insights** | **Crystal Meanings** | **Additional Features** |
+
+### **🎨 UI Excellence**
+
+| ![Beautiful UI](https://raw.githubusercontent.com/kreggscode/Zodiac-Ai-Kotlin/main/Screenshots/Screenshot_20251014_025916.png) | ![Glassmorphism](https://raw.githubusercontent.com/kreggscode/Zodiac-Ai-Kotlin/main/Screenshots/Screenshot_20251014_025922.png) | ![Smooth Animations](https://raw.githubusercontent.com/kreggscode/Zodiac-Ai-Kotlin/main/Screenshots/Screenshot_20251014_025937.png) |
+|:---:|:---:|:---:|
+| **Modern Design** | **Frosted Glass Effects** | **Smooth Interactions** |
+
 </div>
 
 ---
