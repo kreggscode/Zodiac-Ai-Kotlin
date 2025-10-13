@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ZodiacAI Finder</string>
+    
+    <!-- Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_horoscope">Horoscope</string>
+    <string name="nav_compatibility">Match</string>
+    <string name="nav_chat">AI Chat</string>
+    <string name="nav_encyclopedia">Encyclopedia</string>
+    
+    <!-- Home Screen -->
+    <string name="welcome_title">Welcome to ZodiacAI</string>
+    <string name="daily_horoscope">Daily Horoscope</string>
+    <string name="find_your_sign">Find Your Sign</string>
+    <string name="compatibility_check">Compatibility</string>
+    <string name="tarot_reading">Tarot Reading</string>
+    <string name="moon_phase">Moon Phase</string>
+    
+    <!-- Zodiac Signs -->
+    <string name="aries">Aries</string>
+    <string name="taurus">Taurus</string>
+    <string name="gemini">Gemini</string>
+    <string name="cancer">Cancer</string>
+    <string name="leo">Leo</string>
+    <string name="virgo">Virgo</string>
+    <string name="libra">Libra</string>
+    <string name="scorpio">Scorpio</string>
+    <string name="sagittarius">Sagittarius</string>
+    <string name="capricorn">Capricorn</string>
+    <string name="aquarius">Aquarius</string>
+    <string name="pisces">Pisces</string>
+</resources>

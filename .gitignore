@@ -1,0 +1,35 @@
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+**/build/
+app/build/
+*.zip
+gradle-*/lib/*.jar
+.gradle/
+gradle.zip
+# Android Studio specific
+.idea/
+*.log
+# Gradle
+gradle/
+gradle-*/
+gradlew
+gradlew.bat
+gradle.properties
+# Build outputs
+app/build/
+build/
+# Large JAR files
+*.jar
