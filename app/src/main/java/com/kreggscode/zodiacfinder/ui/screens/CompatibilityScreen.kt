@@ -225,29 +225,41 @@ fun CompatibilityScreen(
                 
                 // Insights
                 item {
-                    GlassCard(modifier = Modifier.fillMaxWidth()) {
-                        Column {
+                    GradientGlassCard(
+                        modifier = Modifier.fillMaxWidth(),
+                        gradientColors = listOf(
+                            MysticPurple.copy(alpha = 0.2f),
+                            CosmicBlue.copy(alpha = 0.1f)
+                        )
+                    ) {
+                        Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
                             Row(
                                 verticalAlignment = Alignment.CenterVertically,
-                                modifier = Modifier.padding(bottom = 12.dp)
+                                horizontalArrangement = Arrangement.spacedBy(10.dp)
                             ) {
                                 Text(
                                     text = "💡",
-                                    fontSize = 24.sp,
-                                    modifier = Modifier.padding(end = 8.dp)
+                                    fontSize = 32.sp
                                 )
                                 Text(
                                     text = "Insights",
-                                    fontSize = 18.sp,
+                                    fontSize = 20.sp,
                                     fontWeight = FontWeight.Bold,
-                                    color = MaterialTheme.colorScheme.primary
+                                    color = MysticPurple
                                 )
                             }
+                            
+                            HorizontalDivider(
+                                color = MysticPurple.copy(alpha = 0.3f),
+                                thickness = 2.dp
+                            )
+                            
                             Text(
                                 text = result.insights,
-                                fontSize = 14.sp,
-                                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.8f),
-                                lineHeight = 20.sp
+                                fontSize = 15.sp,
+                                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.95f),
+                                lineHeight = 24.sp,
+                                fontWeight = FontWeight.Normal
                             )
                         }
                     }
@@ -256,38 +268,53 @@ fun CompatibilityScreen(
                 // Suggestions
                 if (result.suggestions.isNotEmpty()) {
                     item {
-                        GlassCard(modifier = Modifier.fillMaxWidth()) {
-                            Column {
+                        GradientGlassCard(
+                            modifier = Modifier.fillMaxWidth(),
+                            gradientColors = listOf(
+                                LuckyGold.copy(alpha = 0.2f),
+                                LuckyGold.copy(alpha = 0.05f)
+                            )
+                        ) {
+                            Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
                                 Row(
                                     verticalAlignment = Alignment.CenterVertically,
-                                    modifier = Modifier.padding(bottom = 12.dp)
+                                    horizontalArrangement = Arrangement.spacedBy(10.dp)
                                 ) {
                                     Text(
                                         text = "✨",
-                                        fontSize = 24.sp,
-                                        modifier = Modifier.padding(end = 8.dp)
+                                        fontSize = 32.sp
                                     )
                                     Text(
                                         text = "Suggestions",
-                                        fontSize = 18.sp,
+                                        fontSize = 20.sp,
                                         fontWeight = FontWeight.Bold,
-                                        color = MaterialTheme.colorScheme.primary
+                                        color = LuckyGold
                                     )
                                 }
-                                result.suggestions.forEach { suggestion ->
-                                    Row(
-                                        modifier = Modifier.padding(vertical = 4.dp)
-                                    ) {
-                                        Text(
-                                            text = "• ",
-                                            fontSize = 14.sp,
-                                            color = MaterialTheme.colorScheme.primary
-                                        )
-                                        Text(
-                                            text = suggestion,
-                                            fontSize = 14.sp,
-                                            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.8f)
-                                        )
+                                
+                                HorizontalDivider(
+                                    color = LuckyGold.copy(alpha = 0.3f),
+                                    thickness = 2.dp
+                                )
+                                
+                                Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                                    result.suggestions.forEach { suggestion ->
+                                        Row(
+                                            modifier = Modifier.fillMaxWidth(),
+                                            horizontalArrangement = Arrangement.spacedBy(8.dp)
+                                        ) {
+                                            Text(
+                                                text = "🌟",
+                                                fontSize = 16.sp
+                                            )
+                                            Text(
+                                                text = suggestion,
+                                                fontSize = 15.sp,
+                                                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.9f),
+                                                lineHeight = 22.sp,
+                                                modifier = Modifier.weight(1f)
+                                            )
+                                        }
                                     }
                                 }
                             }

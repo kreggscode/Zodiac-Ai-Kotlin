@@ -8,6 +8,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kreggscode.zodiacfinder.data.model.ZodiacSign
+import com.kreggscode.zodiacfinder.ui.theme.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 @Composable
 fun FormattedHoroscopeCard(
@@ -18,7 +21,8 @@ fun FormattedHoroscopeCard(
     finance: String,
     health: String,
     luckyColor: String,
-    luckyNumber: Int
+    luckyNumber: Int,
+    date: String = SimpleDateFormat("EEEE, MMMM d, yyyy", Locale.getDefault()).format(Date())
 ) {
     GlassCard(
         modifier = Modifier.fillMaxWidth()
@@ -26,6 +30,30 @@ fun FormattedHoroscopeCard(
         Column(
             verticalArrangement = Arrangement.spacedBy(20.dp)
         ) {
+            // Date Display
+            GradientGlassCard(
+                modifier = Modifier.fillMaxWidth(),
+                gradientColors = listOf(
+                    MysticPurple.copy(alpha = 0.2f),
+                    CosmicBlue.copy(alpha = 0.1f)
+                )
+            ) {
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    Text(
+                        text = "📅",
+                        fontSize = 24.sp
+                    )
+                    Text(
+                        text = date,
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        color = MaterialTheme.colorScheme.onSurface
+                    )
+                }
+            }
+            
             // Sign Header
             sign?.let {
                 Row(
@@ -166,27 +194,52 @@ private fun HoroscopeSectionFormatted(
     title: String,
     content: String
 ) {
-    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-        Row(
-            horizontalArrangement = Arrangement.spacedBy(8.dp)
-        ) {
-            Text(
-                text = emoji,
-                fontSize = 24.sp
+    val sectionColor = when (title) {
+        "Overall Energy" -> MysticPurple
+        "Love & Relationships" -> TertiaryLight
+        "Career & Work" -> CosmicBlue
+        "Finance & Money" -> LuckyGold
+        "Health & Wellness" -> SecondaryLight
+        else -> MaterialTheme.colorScheme.primary
+    }
+    
+    GradientGlassCard(
+        modifier = Modifier.fillMaxWidth(),
+        gradientColors = listOf(
+            sectionColor.copy(alpha = 0.2f),
+            sectionColor.copy(alpha = 0.05f)
+        )
+    ) {
+        Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(10.dp),
+                verticalAlignment = androidx.compose.ui.Alignment.CenterVertically
+            ) {
+                Text(
+                    text = emoji,
+                    fontSize = 32.sp
+                )
+                Text(
+                    text = title,
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = sectionColor
+                )
+            }
+            
+            HorizontalDivider(
+                modifier = Modifier.padding(vertical = 4.dp),
+                color = sectionColor.copy(alpha = 0.3f),
+                thickness = 2.dp
             )
+            
             Text(
-                text = title,
-                fontSize = 18.sp,
-                fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colorScheme.primary
+                text = content,
+                fontSize = 15.sp,
+                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.95f),
+                lineHeight = 24.sp,
+                fontWeight = FontWeight.Normal
             )
         }
-        
-        Text(
-            text = content,
-            fontSize = 14.sp,
-            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.9f),
-            lineHeight = 22.sp
-        )
     }
 }

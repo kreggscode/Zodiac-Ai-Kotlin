@@ -29,17 +29,22 @@ Welcome to **ZodiacAI Finder** - where ancient wisdom meets cutting-edge AI tech
 
 <div align="center">
 
-### **Screenshots Gallery**
+### **📸 Screenshots Gallery**
 
-| ![Home Screen](https://via.placeholder.com/200x350/6366F1/FFFFFF?text=Home) | ![Horoscope](https://via.placeholder.com/200x350/A855F7/FFFFFF?text=Horoscope) | ![Chat](https://via.placeholder.com/200x350/EC4899/FFFFFF?text=AI+Chat) |
+| ![Home Screen](https://raw.githubusercontent.com/kreggscode/Zodiac-Ai-Kotlin/main/Screenshots/Screenshot_20251014_025613.png) | ![Horoscope](https://raw.githubusercontent.com/kreggscode/Zodiac-Ai-Kotlin/main/Screenshots/Screenshot_20251014_025623.png) | ![Birth Chart](https://raw.githubusercontent.com/kreggscode/Zodiac-Ai-Kotlin/main/Screenshots/Screenshot_20251014_025635.png) |
 |:---:|:---:|:---:|
-| **Cosmic Dashboard** | **AI Horoscopes** | **Intelligent Chat** |
-| Beautiful glass cards | Personalized readings | Context-aware responses |
+| **🏠 Cosmic Dashboard** | **🔮 AI Horoscopes** | **⭐ Birth Chart Analysis** |
+| Beautiful glass cards | Personalized readings | Immediate astrological data |
 
-| ![Zodiac Finder](https://via.placeholder.com/200x350/10B981/FFFFFF?text=Zodiac+Finder) | ![Compatibility](https://via.placeholder.com/200x350/3B82F6/FFFFFF?text=Compatibility) | ![Encyclopedia](https://via.placeholder.com/200x350/06B6D4/FFFFFF?text=Encyclopedia) |
+| ![Compatibility](https://raw.githubusercontent.com/kreggscode/Zodiac-Ai-Kotlin/main/Screenshots/Screenshot_20251014_025640.png) | ![Tarot](https://raw.githubusercontent.com/kreggscode/Zodiac-Ai-Kotlin/main/Screenshots/Screenshot_20251014_025658.png) | ![Palm Reading](https://raw.githubusercontent.com/kreggscode/Zodiac-Ai-Kotlin/main/Screenshots/Screenshot_20251014_025738.png) |
 |:---:|:---:|:---:|
-| **Find Your Sign** | **Love Compatibility** | **Complete Knowledge** |
-| Date-based discovery | Detailed analysis | 12 Signs explored |
+| **💕 Love Compatibility** | **🎴 Tarot Encyclopedia** | **🖐️ Palm Reading** |
+| Detailed relationship analysis | All 78 Tarot cards | AI-powered palm analysis |
+
+| ![Profile](https://raw.githubusercontent.com/kreggscode/Zodiac-Ai-Kotlin/main/Screenshots/Screenshot_20251014_025742.png) | ![AI Chat](https://raw.githubusercontent.com/kreggscode/Zodiac-Ai-Kotlin/main/Screenshots/Screenshot_20251014_025746.png) | ![Encyclopedia](https://raw.githubusercontent.com/kreggscode/Zodiac-Ai-Kotlin/main/Screenshots/Screenshot_20251014_025809.png) |
+|:---:|:---:|:---:|
+| **👤 Personal Profile** | **🤖 AI Astrologer Chat** | **📚 Complete Encyclopedia** |
+| Saved birth data & analysis | Context-aware guidance | Zodiac, Tarot, Crystals & more |
 
 </div>
 
@@ -55,12 +60,14 @@ Welcome to **ZodiacAI Finder** - where ancient wisdom meets cutting-edge AI tech
 |:---:|:---:|:---:|
 | **🔮 AI Horoscopes** | Daily personalized readings powered by advanced AI | ✅ Complete |
 | **💫 Zodiac Finder** | Find your sign with beautiful date picker | ✅ Complete |
-| **💕 Compatibility** | Detailed relationship analysis between signs | ✅ Complete |
-| **🤖 AI Chat** | Interactive astrology chatbot | ✅ Complete |
-| **📚 Encyclopedia** | Complete zodiac knowledge base | ✅ Complete |
-| **🎴 Tarot Readings** | Mystical card interpretations | 🔄 In Progress |
-| **🌙 Moon Phases** | Real-time lunar insights | 🔄 In Progress |
-| **🖐️ Palm Reading** | AI-powered palm analysis | 🔄 In Progress |
+| **💕 Compatibility** | Detailed relationship analysis with visual selection | ✅ Complete |
+| **🤖 AI Chat** | Interactive astrology chatbot with context | ✅ Complete |
+| **📚 Encyclopedia** | Complete zodiac, tarot, crystals knowledge base | ✅ Complete |
+| **🎴 Tarot Readings** | All 78 cards with detailed interpretations | ✅ Complete |
+| **⭐ Birth Chart** | Immediate astrological data + AI analysis | ✅ Complete |
+| **🖐️ Palm Reading** | AI-powered comprehensive palm analysis | ✅ Complete |
+| **👤 Profile** | Persistent data storage with AI insights | ✅ Complete |
+| **🌙 Moon Phases** | Lunar insights and guidance | ✅ Complete |
 
 </div>
 

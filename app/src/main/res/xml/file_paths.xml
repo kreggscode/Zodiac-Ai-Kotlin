@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <cache-path name="palm_images" path="." />
+    <external-cache-path name="external_palm_images" path="." />
+</paths>

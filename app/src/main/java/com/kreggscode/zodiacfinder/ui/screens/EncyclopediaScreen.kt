@@ -346,6 +346,100 @@ private fun ZodiacDetailView(
             }
         }
         
+        // Ruling Planet
+        item {
+            GradientGlassCard(
+                modifier = Modifier.fillMaxWidth(),
+                gradientColors = listOf(
+                    CosmicBlue.copy(alpha = 0.3f),
+                    MysticPurple.copy(alpha = 0.2f)
+                )
+            ) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Column {
+                        Text(
+                            text = "🪐 Ruling Planet",
+                            fontSize = 18.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = MaterialTheme.colorScheme.primary,
+                            modifier = Modifier.padding(bottom = 8.dp)
+                        )
+                        Text(
+                            text = getRulingPlanetForSign(sign),
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.SemiBold,
+                            color = MaterialTheme.colorScheme.onSurface
+                        )
+                    }
+                }
+            }
+        }
+        
+        // Compatibility
+        item {
+            GlassCard(modifier = Modifier.fillMaxWidth()) {
+                Column {
+                    Text(
+                        text = "💞 Best Compatibility",
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = MaterialTheme.colorScheme.primary,
+                        modifier = Modifier.padding(bottom = 12.dp)
+                    )
+                    Text(
+                        text = getCompatibilityForSign(sign),
+                        fontSize = 14.sp,
+                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.8f),
+                        lineHeight = 20.sp
+                    )
+                }
+            }
+        }
+        
+        // Famous People
+        item {
+            GlassCard(modifier = Modifier.fillMaxWidth()) {
+                Column {
+                    Text(
+                        text = "🌟 Famous People",
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = MaterialTheme.colorScheme.primary,
+                        modifier = Modifier.padding(bottom = 12.dp)
+                    )
+                    Text(
+                        text = getFamousPeopleForSign(sign),
+                        fontSize = 14.sp,
+                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.8f),
+                        lineHeight = 20.sp
+                    )
+                }
+            }
+        }
+        
+        // Ask AI Button
+        item {
+            NeumorphicButton(
+                onClick = { /* Navigate to Chat with pre-filled question about this sign */ },
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = "💬",
+                        fontSize = 20.sp
+                    )
+                    Text("Ask AI About ${sign.displayName}")
+                }
+            }
+        }
+        
         // Bottom padding
         item {
             Spacer(modifier = Modifier.height(80.dp))
@@ -402,5 +496,56 @@ private fun getWeaknessesForSign(sign: ZodiacSign): String {
         ZodiacSign.CAPRICORN -> "Know-it-all, unforgiving, condescending, expecting the worst"
         ZodiacSign.AQUARIUS -> "Runs from emotional expression, temperamental, uncompromising"
         ZodiacSign.PISCES -> "Fearful, overly trusting, sad, desire to escape reality"
+    }
+}
+
+private fun getRulingPlanetForSign(sign: ZodiacSign): String {
+    return when (sign) {
+        ZodiacSign.ARIES -> "Mars - Planet of action and desire"
+        ZodiacSign.TAURUS -> "Venus - Planet of love and beauty"
+        ZodiacSign.GEMINI -> "Mercury - Planet of communication"
+        ZodiacSign.CANCER -> "Moon - Planet of emotions and nurturing"
+        ZodiacSign.LEO -> "Sun - Planet of self and vitality"
+        ZodiacSign.VIRGO -> "Mercury - Planet of analysis and service"
+        ZodiacSign.LIBRA -> "Venus - Planet of harmony and relationships"
+        ZodiacSign.SCORPIO -> "Pluto & Mars - Planets of transformation"
+        ZodiacSign.SAGITTARIUS -> "Jupiter - Planet of expansion and wisdom"
+        ZodiacSign.CAPRICORN -> "Saturn - Planet of discipline and responsibility"
+        ZodiacSign.AQUARIUS -> "Uranus & Saturn - Planets of innovation"
+        ZodiacSign.PISCES -> "Neptune & Jupiter - Planets of dreams and intuition"
+    }
+}
+
+private fun getCompatibilityForSign(sign: ZodiacSign): String {
+    return when (sign) {
+        ZodiacSign.ARIES -> "Most compatible with Leo, Sagittarius, Gemini, and Aquarius. These signs match Aries' energy and adventurous spirit."
+        ZodiacSign.TAURUS -> "Most compatible with Virgo, Capricorn, Cancer, and Pisces. These signs appreciate Taurus' stability and loyalty."
+        ZodiacSign.GEMINI -> "Most compatible with Libra, Aquarius, Aries, and Leo. These signs enjoy Gemini's wit and intellectual curiosity."
+        ZodiacSign.CANCER -> "Most compatible with Scorpio, Pisces, Taurus, and Virgo. These signs understand Cancer's emotional depth."
+        ZodiacSign.LEO -> "Most compatible with Aries, Sagittarius, Gemini, and Libra. These signs appreciate Leo's warmth and generosity."
+        ZodiacSign.VIRGO -> "Most compatible with Taurus, Capricorn, Cancer, and Scorpio. These signs value Virgo's practical nature."
+        ZodiacSign.LIBRA -> "Most compatible with Gemini, Aquarius, Leo, and Sagittarius. These signs appreciate Libra's balanced approach."
+        ZodiacSign.SCORPIO -> "Most compatible with Cancer, Pisces, Virgo, and Capricorn. These signs handle Scorpio's intensity well."
+        ZodiacSign.SAGITTARIUS -> "Most compatible with Aries, Leo, Libra, and Aquarius. These signs match Sagittarius' love for adventure."
+        ZodiacSign.CAPRICORN -> "Most compatible with Taurus, Virgo, Scorpio, and Pisces. These signs respect Capricorn's ambition."
+        ZodiacSign.AQUARIUS -> "Most compatible with Gemini, Libra, Sagittarius, and Aries. These signs appreciate Aquarius' uniqueness."
+        ZodiacSign.PISCES -> "Most compatible with Cancer, Scorpio, Taurus, and Capricorn. These signs understand Pisces' sensitivity."
+    }
+}
+
+private fun getFamousPeopleForSign(sign: ZodiacSign): String {
+    return when (sign) {
+        ZodiacSign.ARIES -> "Lady Gaga, Robert Downey Jr., Emma Watson, Leonardo da Vinci, Vincent van Gogh"
+        ZodiacSign.TAURUS -> "Adele, Dwayne 'The Rock' Johnson, David Beckham, Queen Elizabeth II, William Shakespeare"
+        ZodiacSign.GEMINI -> "Marilyn Monroe, Johnny Depp, Angelina Jolie, Kanye West, Paul McCartney"
+        ZodiacSign.CANCER -> "Selena Gomez, Tom Hanks, Princess Diana, Elon Musk, Frida Kahlo"
+        ZodiacSign.LEO -> "Barack Obama, Jennifer Lopez, Madonna, Daniel Radcliffe, Napoleon Bonaparte"
+        ZodiacSign.VIRGO -> "Beyoncé, Keanu Reeves, Zendaya, Michael Jackson, Mother Teresa"
+        ZodiacSign.LIBRA -> "Kim Kardashian, Will Smith, Serena Williams, Gandhi, John Lennon"
+        ZodiacSign.SCORPIO -> "Leonardo DiCaprio, Katy Perry, Pablo Picasso, Bill Gates, Marie Curie"
+        ZodiacSign.SAGITTARIUS -> "Taylor Swift, Brad Pitt, Jay-Z, Walt Disney, Winston Churchill"
+        ZodiacSign.CAPRICORN -> "Michelle Obama, Denzel Washington, Elvis Presley, Martin Luther King Jr., Isaac Newton"
+        ZodiacSign.AQUARIUS -> "Oprah Winfrey, Harry Styles, Ellen DeGeneres, Abraham Lincoln, Galileo Galilei"
+        ZodiacSign.PISCES -> "Rihanna, Albert Einstein, Steve Jobs, George Washington, Michelangelo"
     }
 }

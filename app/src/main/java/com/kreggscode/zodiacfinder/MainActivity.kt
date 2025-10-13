@@ -126,6 +126,33 @@ fun NavigationGraph(
                 onNavigateToReadingHub = {
                     navController.navigate(Screen.ReadingHub.route)
                 },
+                onNavigateToProfile = {
+                    navController.navigate(Screen.Profile.route)
+                },
+                onNavigateToTarot = {
+                    navController.navigate(Screen.Tarot.route)
+                },
+                onNavigateToMoonPhase = {
+                    navController.navigate(Screen.MoonPhase.route)
+                },
+                onNavigateToGemstones = {
+                    navController.navigate(Screen.GemstoneEncyclopedia.route)
+                },
+                onNavigateToBirthChart = {
+                    navController.navigate(Screen.BirthChart.route)
+                },
+                onNavigateToElements = {
+                    navController.navigate(Screen.ElementsEncyclopedia.route)
+                },
+                onNavigateToCrystals = {
+                    navController.navigate(Screen.CrystalsEncyclopedia.route)
+                },
+                onNavigateToPalmReading = {
+                    navController.navigate(Screen.PalmEncyclopedia.route)
+                },
+                onNavigateToAnalyzePalm = {
+                    navController.navigate(Screen.AnalyzePalm.route)
+                },
                 isDarkTheme = isDarkTheme,
                 onThemeToggle = onThemeToggle
             )
@@ -151,7 +178,11 @@ fun NavigationGraph(
         
         composable(Screen.Encyclopedia.route) {
             EncyclopediaScreenNew(
-                onNavigateBack = { navController.popBackStack() }
+                onNavigateBack = { navController.popBackStack() },
+                onNavigateToTarot = { navController.navigate(Screen.TarotEncyclopedia.route) },
+                onNavigateToCrystals = { navController.navigate(Screen.CrystalsEncyclopedia.route) },
+                onNavigateToElements = { navController.navigate(Screen.ElementsEncyclopedia.route) },
+                onNavigateToGemstones = { navController.navigate(Screen.GemstoneEncyclopedia.route) }
             )
         }
         
@@ -166,6 +197,67 @@ fun NavigationGraph(
         
         composable(Screen.ReadingHub.route) {
             ReadingHubScreen(
+                onNavigateBack = { navController.popBackStack() }
+            )
+        }
+        
+        composable(Screen.Profile.route) {
+            ProfileScreen(
+                onNavigateBack = { navController.popBackStack() }
+            )
+        }
+        
+        composable(Screen.Tarot.route) {
+            TarotScreen(
+                onNavigateBack = { navController.popBackStack() }
+            )
+        }
+        
+        composable(Screen.MoonPhase.route) {
+            MoonPhaseScreen(
+                onNavigateBack = { navController.popBackStack() }
+            )
+        }
+        
+        composable(Screen.GemstoneEncyclopedia.route) {
+            GemstoneEncyclopediaScreen(
+                onNavigateBack = { navController.popBackStack() }
+            )
+        }
+        
+        composable(Screen.BirthChart.route) {
+            BirthChartAnalysisScreen(
+                onNavigateBack = { navController.popBackStack() }
+            )
+        }
+        
+        composable(Screen.ElementsEncyclopedia.route) {
+            ElementsEncyclopediaScreen(
+                onNavigateBack = { navController.popBackStack() }
+            )
+        }
+        
+        composable(Screen.TarotEncyclopedia.route) {
+            TarotEncyclopediaScreen(
+                onNavigateBack = { navController.popBackStack() }
+            )
+        }
+        
+        composable(Screen.CrystalsEncyclopedia.route) {
+            CrystalsEncyclopediaScreen(
+                onNavigateBack = { navController.popBackStack() }
+            )
+        }
+        
+        composable(Screen.PalmEncyclopedia.route) {
+            // Placeholder - Palm Reading Encyclopedia coming soon
+            ReadingHubScreen(
+                onNavigateBack = { navController.popBackStack() }
+            )
+        }
+        
+        composable(Screen.AnalyzePalm.route) {
+            AnalyzePalmScreen(
                 onNavigateBack = { navController.popBackStack() }
             )
         }

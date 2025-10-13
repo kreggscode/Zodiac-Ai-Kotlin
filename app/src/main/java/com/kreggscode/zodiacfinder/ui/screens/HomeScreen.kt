@@ -1,6 +1,7 @@
 package com.kreggscode.zodiacfinder.ui.screens
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -9,6 +10,7 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DarkMode
 import androidx.compose.material.icons.filled.LightMode
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -30,6 +32,15 @@ fun HomeScreen(
     onNavigateToHoroscope: () -> Unit,
     onNavigateToCompatibility: () -> Unit,
     onNavigateToReadingHub: () -> Unit,
+    onNavigateToProfile: () -> Unit = {},
+    onNavigateToTarot: () -> Unit = {},
+    onNavigateToMoonPhase: () -> Unit = {},
+    onNavigateToGemstones: () -> Unit = {},
+    onNavigateToBirthChart: () -> Unit = {},
+    onNavigateToElements: () -> Unit = {},
+    onNavigateToCrystals: () -> Unit = {},
+    onNavigateToPalmReading: () -> Unit = {},
+    onNavigateToAnalyzePalm: () -> Unit = {},
     isDarkTheme: Boolean,
     onThemeToggle: () -> Unit,
     viewModel: HomeViewModel = viewModel()
@@ -53,14 +64,14 @@ fun HomeScreen(
             contentPadding = PaddingValues(start = 20.dp, end = 20.dp, top = 24.dp, bottom = 100.dp),
             verticalArrangement = Arrangement.spacedBy(20.dp)
         ) {
-            // Header with theme toggle
+            // Header with theme toggle and profile
             item {
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Column {
+                    Column(modifier = Modifier.weight(1f)) {
                         Text(
                             text = "✨ ZodiacAI",
                             fontSize = 32.sp,
@@ -74,12 +85,22 @@ fun HomeScreen(
                         )
                     }
                     
-                    GlassIconButton(onClick = onThemeToggle) {
-                        Icon(
-                            imageVector = if (isDarkTheme) Icons.Default.LightMode else Icons.Default.DarkMode,
-                            contentDescription = "Toggle theme",
-                            tint = MaterialTheme.colorScheme.primary
-                        )
+                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        GlassIconButton(onClick = onNavigateToProfile) {
+                            Icon(
+                                imageVector = Icons.Default.Person,
+                                contentDescription = "Profile",
+                                tint = MaterialTheme.colorScheme.primary
+                            )
+                        }
+                        
+                        GlassIconButton(onClick = onThemeToggle) {
+                            Icon(
+                                imageVector = if (isDarkTheme) Icons.Default.LightMode else Icons.Default.DarkMode,
+                                contentDescription = "Toggle theme",
+                                tint = MaterialTheme.colorScheme.primary
+                            )
+                        }
                     }
                 }
             }
@@ -168,7 +189,7 @@ fun HomeScreen(
             item {
                 LazyVerticalGrid(
                     columns = GridCells.Fixed(2),
-                    modifier = Modifier.height(400.dp),
+                    modifier = Modifier.height(1000.dp),
                     horizontalArrangement = Arrangement.spacedBy(12.dp),
                     verticalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
@@ -192,19 +213,78 @@ fun HomeScreen(
                     
                     item {
                         QuickActionCard(
-                            title = "Tarot Reading",
-                            icon = "🃏",
-                            color = CosmicBlue,
-                            onClick = onNavigateToReadingHub
+                            title = "Birth Chart",
+                            icon = "⭐",
+                            color = MysticPurple,
+                            onClick = onNavigateToBirthChart
                         )
                     }
                     
                     item {
                         QuickActionCard(
-                            title = "Moon Phase",
-                            icon = "🌙",
+                            title = "Analyze Palm",
+                            icon = "📸",
+                            color = LuckyGold,
+                            onClick = onNavigateToAnalyzePalm,
+                            badge = "NEW"
+                        )
+                    }
+                    
+                    item {
+                        QuickActionCard(
+                            title = "Reading Hub",
+                            icon = "📚",
+                            color = MysticPurple,
+                            onClick = onNavigateToReadingHub,
+                            badge = "ALL"
+                        )
+                    }
+                    
+                    item {
+                        QuickActionCard(
+                            title = "Tarot Cards",
+                            icon = "🎴",
+                            color = CosmicBlue,
+                            onClick = onNavigateToTarot,
+                            badge = "78 Cards"
+                        )
+                    }
+                    
+                    item {
+                        QuickActionCard(
+                            title = "Crystals",
+                            icon = "💎",
+                            color = FireElement,
+                            onClick = onNavigateToCrystals,
+                            badge = "NEW"
+                        )
+                    }
+                    
+                    item {
+                        QuickActionCard(
+                            title = "Palm Reading",
+                            icon = "🖐️",
                             color = SecondaryLight,
-                            onClick = onNavigateToReadingHub
+                            onClick = onNavigateToPalmReading,
+                            badge = "NEW"
+                        )
+                    }
+                    
+                    item {
+                        QuickActionCard(
+                            title = "Gemstones",
+                            icon = "💍",
+                            color = TertiaryLight,
+                            onClick = onNavigateToGemstones
+                        )
+                    }
+                    
+                    item {
+                        QuickActionCard(
+                            title = "Moon Phases",
+                            icon = "🌙",
+                            color = WaterElement,
+                            onClick = onNavigateToMoonPhase
                         )
                     }
                 }
@@ -228,35 +308,40 @@ fun HomeScreen(
                         element = "Fire",
                         signs = "Aries, Leo, Sagittarius",
                         description = "Passionate, dynamic, and temperamental. Fire signs are driven by enthusiasm and inspiration.",
-                        color = FireElement
+                        color = FireElement,
+                        onClick = onNavigateToElements
                     )
                     ElementCard(
                         emoji = "🌍",
                         element = "Earth",
                         signs = "Taurus, Virgo, Capricorn",
                         description = "Grounded, practical, and reliable. Earth signs are stable and focused on the material world.",
-                        color = EarthElement
+                        color = EarthElement,
+                        onClick = onNavigateToElements
                     )
                     ElementCard(
                         emoji = "💨",
                         element = "Air",
                         signs = "Gemini, Libra, Aquarius",
                         description = "Intellectual, communicative, and social. Air signs are all about ideas and connections.",
-                        color = AirElement
+                        color = AirElement,
+                        onClick = onNavigateToElements
                     )
                     ElementCard(
                         emoji = "💧",
                         element = "Water",
                         signs = "Cancer, Scorpio, Pisces",
                         description = "Emotional, intuitive, and sensitive. Water signs are deeply connected to their feelings.",
-                        color = WaterElement
+                        color = WaterElement,
+                        onClick = onNavigateToElements
                     )
                     ElementCard(
                         emoji = "⚡",
                         element = "Ether (Spirit)",
                         signs = "The Fifth Element",
                         description = "The mystical force that binds all elements together. Represents consciousness and divine energy.",
-                        color = MysticPurple
+                        color = MysticPurple,
+                        onClick = onNavigateToElements
                     )
                 }
             }
@@ -275,10 +360,13 @@ private fun ElementCard(
     element: String,
     signs: String,
     description: String,
-    color: androidx.compose.ui.graphics.Color
+    color: androidx.compose.ui.graphics.Color,
+    onClick: () -> Unit = {}
 ) {
     GradientGlassCard(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(onClick = onClick),
         gradientColors = listOf(
             color.copy(alpha = 0.3f),
             color.copy(alpha = 0.1f)

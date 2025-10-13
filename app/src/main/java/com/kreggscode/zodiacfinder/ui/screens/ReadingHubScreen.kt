@@ -1,6 +1,7 @@
 package com.kreggscode.zodiacfinder.ui.screens
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.*
@@ -37,9 +38,13 @@ fun ReadingHubScreen(
                 )
             )
     ) {
-        Column(modifier = Modifier.fillMaxSize()) {
+        LazyColumn(
+            modifier = Modifier.fillMaxSize(),
+            contentPadding = PaddingValues(start = 20.dp, end = 20.dp, top = 24.dp, bottom = 100.dp),
+            verticalArrangement = Arrangement.spacedBy(20.dp)
+        ) {
             // Header with Back Button
-            Box(modifier = Modifier.padding(start = 20.dp, end = 20.dp, top = 24.dp)) {
+            item {
                 TopBarWithBack(
                     title = "🔮 Reading Hub",
                     subtitle = "Mystical insights and guidance",
@@ -47,55 +52,153 @@ fun ReadingHubScreen(
                 )
             }
             
-            // Tab Row
-            ScrollableTabRow(
-                selectedTabIndex = selectedTab,
-                modifier = Modifier.fillMaxWidth(),
-                containerColor = androidx.compose.ui.graphics.Color.Transparent,
-                contentColor = MaterialTheme.colorScheme.primary,
-                edgePadding = 16.dp
-            ) {
-                tabs.forEachIndexed { index, title ->
-                    Tab(
-                        selected = selectedTab == index,
-                        onClick = { selectedTab = index },
-                        text = {
-                            Text(
-                                text = title,
-                                fontSize = 16.sp,
-                                fontWeight = if (selectedTab == index) FontWeight.Bold else FontWeight.Normal
-                            )
-                        }
+            // STUNNING Hero Section
+            item {
+                GradientGlassCard(
+                    modifier = Modifier.fillMaxWidth(),
+                    gradientColors = listOf(
+                        MysticPurple.copy(alpha = 0.4f),
+                        CosmicBlue.copy(alpha = 0.3f),
+                        TertiaryLight.copy(alpha = 0.2f)
                     )
+                ) {
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        Text("✨", fontSize = 72.sp)
+                        Spacer(Modifier.height(16.dp))
+                        Text(
+                            text = "Your Mystical Gateway",
+                            fontSize = 24.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = MaterialTheme.colorScheme.primary
+                        )
+                        Spacer(Modifier.height(8.dp))
+                        Text(
+                            text = "Explore Tarot, Moon Phases, Palm Reading & Lucky Numbers",
+                            fontSize = 14.sp,
+                            color = MaterialTheme.colorScheme.onSurface.copy(0.7f),
+                            modifier = Modifier.padding(horizontal = 16.dp)
+                        )
+                    }
                 }
             }
             
-            // Content
-            when (selectedTab) {
-                0 -> TarotReadingTab()
-                1 -> MoonPhaseTab()
-                2 -> PalmReadingTab()
-                3 -> LuckyNumbersTab()
+            // Tab Selection with Beautiful Cards
+            item {
+                Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(12.dp)
+                    ) {
+                        TabCard(
+                            title = "Tarot",
+                            icon = "🎴",
+                            isSelected = selectedTab == 0,
+                            onClick = { selectedTab = 0 },
+                            modifier = Modifier.weight(1f)
+                        )
+                        TabCard(
+                            title = "Moon",
+                            icon = "🌙",
+                            isSelected = selectedTab == 1,
+                            onClick = { selectedTab = 1 },
+                            modifier = Modifier.weight(1f)
+                        )
+                    }
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(12.dp)
+                    ) {
+                        TabCard(
+                            title = "Palm",
+                            icon = "🖐️",
+                            isSelected = selectedTab == 2,
+                            onClick = { selectedTab = 2 },
+                            modifier = Modifier.weight(1f)
+                        )
+                        TabCard(
+                            title = "Lucky",
+                            icon = "🎲",
+                            isSelected = selectedTab == 3,
+                            onClick = { selectedTab = 3 },
+                            modifier = Modifier.weight(1f)
+                        )
+                    }
+                }
+            }
+            
+            // Content based on selected tab
+            item {
+                when (selectedTab) {
+                    0 -> TarotReadingContent()
+                    1 -> MoonPhaseContent()
+                    2 -> PalmReadingContent()
+                    3 -> LuckyNumbersContent()
+                }
             }
         }
     }
 }
 
 @Composable
-private fun TarotReadingTab() {
+private fun TabCard(
+    title: String,
+    icon: String,
+    isSelected: Boolean,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    GradientGlassCard(
+        modifier = modifier
+            .height(100.dp)
+            .clickable(onClick = onClick),
+        gradientColors = if (isSelected) {
+            listOf(
+                MysticPurple.copy(alpha = 0.4f),
+                CosmicBlue.copy(alpha = 0.3f)
+            )
+        } else {
+            listOf(
+                MaterialTheme.colorScheme.surface.copy(alpha = 0.5f),
+                MaterialTheme.colorScheme.surface.copy(alpha = 0.3f)
+            )
+        }
+    ) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center,
+            modifier = Modifier.fillMaxSize()
+        ) {
+            Text(
+                text = icon,
+                fontSize = 36.sp
+            )
+            Spacer(Modifier.height(8.dp))
+            Text(
+                text = title,
+                fontSize = 16.sp,
+                fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal,
+                color = if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface.copy(0.7f)
+            )
+        }
+    }
+}
+
+@Composable
+private fun TarotReadingContent() {
     var question by remember { mutableStateOf("") }
     var isLoading by remember { mutableStateOf(false) }
     var reading by remember { mutableStateOf<com.kreggscode.zodiacfinder.data.model.TarotReading?>(null) }
     val repository = remember { ZodiacRepository() }
     val coroutineScope = rememberCoroutineScope()
     
-    LazyColumn(
-        modifier = Modifier.fillMaxSize(),
-        contentPadding = PaddingValues(16.dp),
+    Column(
+        modifier = Modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        item {
-            GlassCard(modifier = Modifier.fillMaxWidth()) {
+        GlassCard(modifier = Modifier.fillMaxWidth()) {
                 Column {
                     Text(
                         text = "Ask the Tarot",
@@ -130,79 +233,52 @@ private fun TarotReadingTab() {
                         Text(if (isLoading) "Drawing Cards..." else "🃏 Draw Cards")
                     }
                 }
-            }
         }
         
         if (isLoading) {
-            item {
-                GlassCard(modifier = Modifier.fillMaxWidth()) {
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(150.dp),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        CustomLoadingIndicator()
-                    }
+            GlassCard(modifier = Modifier.fillMaxWidth()) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(150.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    CustomLoadingIndicator()
                 }
             }
         }
         
         reading?.let { tarotReading ->
-            item {
-                Text(
-                    text = "Your Reading",
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.onSurface
-                )
-            }
+            Text(
+                text = "Your Reading",
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold,
+                color = MaterialTheme.colorScheme.onSurface
+            )
             
             tarotReading.cards.forEach { card ->
-                item {
-                    GradientGlassCard(
-                        modifier = Modifier.fillMaxWidth(),
-                        gradientColors = listOf(
-                            MysticPurple.copy(alpha = 0.3f),
-                            CosmicBlue.copy(alpha = 0.2f)
-                        )
-                    ) {
-                        Column {
-                            Text(
-                                text = card.name,
-                                fontSize = 18.sp,
-                                fontWeight = FontWeight.Bold,
-                                color = MaterialTheme.colorScheme.onSurface
-                            )
-                            Text(
-                                text = card.position,
-                                fontSize = 14.sp,
-                                color = MaterialTheme.colorScheme.primary,
-                                modifier = Modifier.padding(vertical = 4.dp)
-                            )
-                            Text(
-                                text = card.meaning,
-                                fontSize = 14.sp,
-                                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.8f),
-                                lineHeight = 20.sp
-                            )
-                        }
-                    }
-                }
-            }
-            
-            item {
-                GlassCard(modifier = Modifier.fillMaxWidth()) {
+                GradientGlassCard(
+                    modifier = Modifier.fillMaxWidth(),
+                    gradientColors = listOf(
+                        MysticPurple.copy(alpha = 0.3f),
+                        CosmicBlue.copy(alpha = 0.2f)
+                    )
+                ) {
                     Column {
                         Text(
-                            text = "💫 Interpretation",
+                            text = card.name,
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
-                            color = MaterialTheme.colorScheme.primary,
-                            modifier = Modifier.padding(bottom = 8.dp)
+                            color = MaterialTheme.colorScheme.onSurface
                         )
                         Text(
-                            text = tarotReading.interpretation,
+                            text = card.position,
+                            fontSize = 14.sp,
+                            color = MaterialTheme.colorScheme.primary,
+                            modifier = Modifier.padding(vertical = 4.dp)
+                        )
+                        Text(
+                            text = card.meaning,
                             fontSize = 14.sp,
                             color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.8f),
                             lineHeight = 20.sp
@@ -211,39 +287,50 @@ private fun TarotReadingTab() {
                 }
             }
             
-            item {
-                GlassCard(modifier = Modifier.fillMaxWidth()) {
-                    Column {
-                        Text(
-                            text = "✨ Advice",
-                            fontSize = 18.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = MaterialTheme.colorScheme.primary,
-                            modifier = Modifier.padding(bottom = 8.dp)
-                        )
-                        Text(
-                            text = tarotReading.advice,
-                            fontSize = 14.sp,
-                            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.8f),
-                            lineHeight = 20.sp
-                        )
-                    }
+            GlassCard(modifier = Modifier.fillMaxWidth()) {
+                Column {
+                    Text(
+                        text = "💫 Interpretation",
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = MaterialTheme.colorScheme.primary,
+                        modifier = Modifier.padding(bottom = 8.dp)
+                    )
+                    Text(
+                        text = tarotReading.interpretation,
+                        fontSize = 14.sp,
+                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.8f),
+                        lineHeight = 20.sp
+                    )
                 }
             }
-        }
-        
-        item {
-            Spacer(modifier = Modifier.height(80.dp))
+            
+            GlassCard(modifier = Modifier.fillMaxWidth()) {
+                Column {
+                    Text(
+                        text = "✨ Advice",
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = MaterialTheme.colorScheme.primary,
+                        modifier = Modifier.padding(bottom = 8.dp)
+                    )
+                    Text(
+                        text = tarotReading.advice,
+                        fontSize = 14.sp,
+                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.8f),
+                        lineHeight = 20.sp
+                    )
+                }
+            }
         }
     }
 }
 
 @Composable
-private fun MoonPhaseTab() {
+private fun MoonPhaseContent() {
     var isLoading by remember { mutableStateOf(false) }
-    var moonPhase by remember { mutableStateOf<com.kreggscode.zodiacfinder.data.model.MoonPhase?>(null) }
+    var moonPhase by remember { mutableStateOf<com.kreggscode.zodiacfinder.data.model.MoonPhaseData?>(null) }
     val repository = remember { ZodiacRepository() }
-    val coroutineScope = rememberCoroutineScope()
     
     LaunchedEffect(Unit) {
         isLoading = true
@@ -254,127 +341,112 @@ private fun MoonPhaseTab() {
         isLoading = false
     }
     
-    LazyColumn(
-        modifier = Modifier.fillMaxSize(),
-        contentPadding = PaddingValues(16.dp),
+    Column(
+        modifier = Modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         if (isLoading) {
-            item {
-                GlassCard(modifier = Modifier.fillMaxWidth()) {
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(150.dp),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        CustomLoadingIndicator()
-                    }
+            GlassCard(modifier = Modifier.fillMaxWidth()) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(150.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    CustomLoadingIndicator()
                 }
             }
         }
         
         moonPhase?.let { phase ->
-            item {
-                GradientGlassCard(
-                    modifier = Modifier.fillMaxWidth(),
-                    gradientColors = listOf(
-                        SecondaryLight.copy(alpha = 0.4f),
-                        CosmicBlue.copy(alpha = 0.2f)
-                    )
+            GradientGlassCard(
+                modifier = Modifier.fillMaxWidth(),
+                gradientColors = listOf(
+                    SecondaryLight.copy(alpha = 0.4f),
+                    CosmicBlue.copy(alpha = 0.2f)
+                )
+            ) {
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier.fillMaxWidth()
                 ) {
-                    Column(
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        modifier = Modifier.fillMaxWidth()
-                    ) {
-                        Text(
-                            text = "🌙",
-                            fontSize = 64.sp
-                        )
-                        Text(
-                            text = phase.phase,
-                            fontSize = 24.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = MaterialTheme.colorScheme.onSurface
-                        )
-                        Text(
-                            text = phase.date,
-                            fontSize = 14.sp,
-                            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
-                        )
-                        Spacer(modifier = Modifier.height(8.dp))
-                        Text(
-                            text = "${(phase.illumination * 100).toInt()}% Illuminated",
-                            fontSize = 16.sp,
-                            color = MaterialTheme.colorScheme.primary
-                        )
-                    }
+                    Text(
+                        text = "🌙",
+                        fontSize = 64.sp
+                    )
+                    Text(
+                        text = phase.phase,
+                        fontSize = 24.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = MaterialTheme.colorScheme.onSurface
+                    )
+                    Text(
+                        text = phase.date,
+                        fontSize = 14.sp,
+                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(
+                        text = "${(phase.illumination * 100).toInt()}% Illuminated",
+                        fontSize = 16.sp,
+                        color = MaterialTheme.colorScheme.primary
+                    )
                 }
             }
             
-            item {
+            GlassCard(modifier = Modifier.fillMaxWidth()) {
+                Column {
+                    Text(
+                        text = "🌟 Insights",
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = MaterialTheme.colorScheme.primary,
+                        modifier = Modifier.padding(bottom = 8.dp)
+                    )
+                    Text(
+                        text = phase.insights,
+                        fontSize = 14.sp,
+                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.8f),
+                        lineHeight = 20.sp
+                    )
+                }
+            }
+            
+            if (phase.recommendations.isNotEmpty()) {
                 GlassCard(modifier = Modifier.fillMaxWidth()) {
                     Column {
                         Text(
-                            text = "🌟 Insights",
+                            text = "💡 Recommendations",
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
                             color = MaterialTheme.colorScheme.primary,
                             modifier = Modifier.padding(bottom = 8.dp)
                         )
-                        Text(
-                            text = phase.insights,
-                            fontSize = 14.sp,
-                            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.8f),
-                            lineHeight = 20.sp
-                        )
-                    }
-                }
-            }
-            
-            if (phase.recommendations.isNotEmpty()) {
-                item {
-                    GlassCard(modifier = Modifier.fillMaxWidth()) {
-                        Column {
-                            Text(
-                                text = "💡 Recommendations",
-                                fontSize = 18.sp,
-                                fontWeight = FontWeight.Bold,
-                                color = MaterialTheme.colorScheme.primary,
-                                modifier = Modifier.padding(bottom = 8.dp)
-                            )
-                            phase.recommendations.forEach { recommendation ->
-                                Row(modifier = Modifier.padding(vertical = 4.dp)) {
-                                    Text(text = "• ", fontSize = 14.sp)
-                                    Text(
-                                        text = recommendation,
-                                        fontSize = 14.sp,
-                                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.8f)
-                                    )
-                                }
+                        phase.recommendations.forEach { recommendation ->
+                            Row(modifier = Modifier.padding(vertical = 4.dp)) {
+                                Text(text = "• ", fontSize = 14.sp)
+                                Text(
+                                    text = recommendation,
+                                    fontSize = 14.sp,
+                                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.8f)
+                                )
                             }
                         }
                     }
                 }
             }
         }
-        
-        item {
-            Spacer(modifier = Modifier.height(80.dp))
-        }
     }
 }
 
 @Composable
-private fun PalmReadingTab() {
+private fun PalmReadingContent() {
     var description by remember { mutableStateOf("") }
     
-    LazyColumn(
-        modifier = Modifier.fillMaxSize(),
-        contentPadding = PaddingValues(16.dp),
+    Column(
+        modifier = Modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        item {
             GlassCard(modifier = Modifier.fillMaxWidth()) {
                 Column {
                     Text(
@@ -409,10 +481,8 @@ private fun PalmReadingTab() {
                     }
                 }
             }
-        }
         
-        item {
-            GradientGlassCard(
+        GradientGlassCard(
                 modifier = Modifier.fillMaxWidth(),
                 gradientColors = listOf(
                     MysticPurple.copy(alpha = 0.3f),
@@ -438,38 +508,29 @@ private fun PalmReadingTab() {
                     )
                 }
             }
-        }
-        
-        item {
-            Spacer(modifier = Modifier.height(80.dp))
-        }
     }
 }
 
 @Composable
-private fun LuckyNumbersTab() {
+private fun LuckyNumbersContent() {
     var selectedSign by remember { mutableStateOf<ZodiacSign?>(null) }
     var isLoading by remember { mutableStateOf(false) }
     var luckyNumbers by remember { mutableStateOf<com.kreggscode.zodiacfinder.data.model.LuckyNumbers?>(null) }
     val repository = remember { ZodiacRepository() }
     val coroutineScope = rememberCoroutineScope()
     
-    LazyColumn(
-        modifier = Modifier.fillMaxSize(),
-        contentPadding = PaddingValues(16.dp),
+    Column(
+        modifier = Modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        item {
             Text(
                 text = "Select Your Sign",
                 fontSize = 18.sp,
                 fontWeight = FontWeight.SemiBold,
                 color = MaterialTheme.colorScheme.onSurface
             )
-        }
         
-        item {
-            androidx.compose.foundation.lazy.LazyRow(
+        androidx.compose.foundation.lazy.LazyRow(
                 horizontalArrangement = Arrangement.spacedBy(12.dp)
             ) {
                 items(ZodiacSign.values().size) { index ->
@@ -492,11 +553,9 @@ private fun LuckyNumbersTab() {
                     )
                 }
             }
-        }
         
         if (isLoading) {
-            item {
-                GlassCard(modifier = Modifier.fillMaxWidth()) {
+            GlassCard(modifier = Modifier.fillMaxWidth()) {
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -506,12 +565,10 @@ private fun LuckyNumbersTab() {
                         CustomLoadingIndicator()
                     }
                 }
-            }
         }
         
         luckyNumbers?.let { numbers ->
-            item {
-                GradientGlassCard(
+            GradientGlassCard(
                     modifier = Modifier.fillMaxWidth(),
                     gradientColors = listOf(
                         LuckyGold.copy(alpha = 0.4f),
@@ -557,11 +614,9 @@ private fun LuckyNumbersTab() {
                         }
                     }
                 }
-            }
             
-            item {
-                GlassCard(modifier = Modifier.fillMaxWidth()) {
-                    Column {
+            GlassCard(modifier = Modifier.fillMaxWidth()) {
+                Column {
                         Text(
                             text = "🔢 Numerological Significance",
                             fontSize = 18.sp,
@@ -577,11 +632,6 @@ private fun LuckyNumbersTab() {
                         )
                     }
                 }
-            }
-        }
-        
-        item {
-            Spacer(modifier = Modifier.height(80.dp))
         }
     }
 }

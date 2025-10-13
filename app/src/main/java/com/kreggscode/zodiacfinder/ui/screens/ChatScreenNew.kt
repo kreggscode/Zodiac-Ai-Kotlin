@@ -20,6 +20,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -62,6 +63,7 @@ fun ChatScreenNew(
                     )
                 )
             )
+            .padding(bottom = 100.dp) // Add padding to account for floating navigation bar
     ) {
         Column(
             modifier = Modifier.fillMaxSize()
@@ -218,7 +220,7 @@ fun ChatScreenNew(
                         textStyle = LocalTextStyle.current.copy(fontSize = 15.sp)
                     )
                     
-                    // Send Button
+                    // Beautiful Gradient Send Button
                     val isEnabled = messageText.isNotBlank() && !uiState.isLoading
                     FloatingActionButton(
                         onClick = {
@@ -228,25 +230,38 @@ fun ChatScreenNew(
                             }
                         },
                         modifier = Modifier.size(56.dp),
-                        containerColor = if (isEnabled) {
-                            MaterialTheme.colorScheme.primary
-                        } else {
-                            MaterialTheme.colorScheme.onSurface.copy(alpha = 0.12f)
-                        },
-                        elevation = FloatingActionButtonDefaults.elevation(
-                            defaultElevation = if (isEnabled) 8.dp else 2.dp
-                        )
+                        containerColor = Color.Transparent,
+                        elevation = FloatingActionButtonDefaults.elevation(0.dp, 0.dp)
                     ) {
-                        Icon(
-                            imageVector = Icons.AutoMirrored.Filled.Send,
-                            contentDescription = "Send",
-                            tint = if (isEnabled) {
-                                MaterialTheme.colorScheme.onPrimary
-                            } else {
-                                MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f)
-                            },
-                            modifier = Modifier.size(24.dp)
-                        )
+                        Box(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .background(
+                                    brush = Brush.linearGradient(
+                                        colors = if (isEnabled) {
+                                            listOf(CosmicBlue, MysticPurple)
+                                        } else {
+                                            listOf(
+                                                MaterialTheme.colorScheme.onSurface.copy(alpha = 0.2f),
+                                                MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f)
+                                            )
+                                        }
+                                    ),
+                                    shape = CircleShape
+                                ),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Icon(
+                                imageVector = Icons.AutoMirrored.Filled.Send,
+                                contentDescription = "Send",
+                                tint = if (isEnabled) {
+                                    Color.White
+                                } else {
+                                    MaterialTheme.colorScheme.onSurface.copy(alpha = 0.4f)
+                                },
+                                modifier = Modifier.size(24.dp)
+                            )
+                        }
                     }
                 }
             }
