@@ -4,79 +4,348 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy - ZodiacAI Finder</title>
+    <meta name="description" content="Privacy Policy for ZodiacAI Finder - Your Cosmic Companion">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 25%, #16213e 50%, #0c0c0c 100%);
+            color: #ffffff;
             line-height: 1.6;
+            overflow-x: hidden;
         }
-        h1, h2 {
-            color: #333;
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
         }
-        .contact-info {
-            background-color: #f0f0f0;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 20px 0;
+
+        .header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .header h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            background: linear-gradient(45deg, #fbbf24, #f59e0b, #ec4899, #8b5cf6);
+            background-size: 400% 400%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-shift 4s ease-in-out infinite;
+            margin-bottom: 1rem;
+        }
+
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .header p {
+            color: #cbd5e1;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .meta-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .meta-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .meta-card strong {
+            color: #fbbf24;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .content {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(45deg, #6366f1, #ec4899);
+        }
+
+        .section h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #fbbf24;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section p, .section li {
+            color: #cbd5e1;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section ul {
+            margin-left: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .section strong {
+            color: #ffffff;
+        }
+
+        .highlight-box {
+            background: linear-gradient(45deg, rgba(99, 102, 241, 0.1), rgba(236, 72, 153, 0.1));
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .highlight-box h3 {
+            color: #fbbf24;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .contact-section {
+            background: linear-gradient(45deg, rgba(251, 191, 36, 0.1), rgba(236, 72, 153, 0.1));
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            color: #fbbf24;
+        }
+
+        .contact-section a {
+            color: #60a5fa;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-section a:hover {
+            color: #3b82f6;
+            text-decoration: underline;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 3rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, #6366f1, #8b5cf6);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .star {
+            position: absolute;
+            background: #ffffff;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        .star:nth-child(1) { width: 2px; height: 2px; top: 10%; left: 20%; animation-delay: 0s; }
+        .star:nth-child(2) { width: 1px; height: 1px; top: 20%; left: 80%; animation-delay: 1s; }
+        .star:nth-child(3) { width: 3px; height: 3px; top: 30%; left: 40%; animation-delay: 2s; }
+        .star:nth-child(4) { width: 1px; height: 1px; top: 50%; left: 10%; animation-delay: 0.5s; }
+        .star:nth-child(5) { width: 2px; height: 2px; top: 70%; left: 90%; animation-delay: 1.5s; }
+        .star:nth-child(6) { width: 1px; height: 1px; top: 80%; left: 60%; animation-delay: 2.5s; }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .meta-info {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Privacy Policy for ZodiacAI Finder</h1>
-    <p><strong>Last Updated:</strong> October 16, 2025</p>
-    <p><strong>App Name:</strong> ZodiacAI Finder - Astrology & Horoscope</p>
-    <p><strong>Developer:</strong> kregg</p>
-
-    <h2>Data Collection</h2>
-    <p>ZodiacAI Finder collects the following types of user data:</p>
-    <ul>
-        <li><strong>Personal Information:</strong> Optional name, birth date, birth time, and birth location (provided by user for astrology calculations)</li>
-        <li><strong>User-Generated Content:</strong> Chat messages with AI, palm reading images</li>
-        <li><strong>Device Information:</strong> Device details and app usage statistics (automatically sent with API requests)</li>
-    </ul>
-
-    <h2>Data Usage</h2>
-    <p>Collected data is used solely for:</p>
-    <ul>
-        <li>Providing personalized astrology readings, horoscopes, and AI-powered features</li>
-        <li>App functionality and improvement</li>
-    </ul>
-
-    <h2>Data Sharing</h2>
-    <p>User data is shared with Pollination AI (text.pollinations.ai) for AI processing. Data is encrypted in transit (HTTPS) and not sold to third parties. Some responses may appear in public feeds unless marked as private.</p>
-
-    <h2>Data Security</h2>
-    <p>We implement appropriate security measures to protect user data. Data is not stored locally on devices or our servers beyond real-time processing.</p>
-
-    <h2 id="data-deletion">Data Deletion Request</h2>
-    <p><strong>How to Request Data Deletion:</strong></p>
-    <ol>
-        <li>Contact us at <a href="mailto:kreg9da@gmail.com">kreg9da@gmail.com</a> with the subject "Data Deletion Request - ZodiacAI Finder"</li>
-        <li>Include your name (if provided) and any relevant details about your data</li>
-        <li>We will process your request within 30 days</li>
-    </ol>
-
-    <p><strong>What Happens When You Request Deletion:</strong></p>
-    <ul>
-        <li>Since ZodiacAI Finder does not store user data locally or on servers, no data is retained after real-time processing</li>
-        <li>Data sent to Pollination AI for processing is handled according to their privacy practices</li>
-        <li>We will confirm deletion and cease any further processing of your information</li>
-        <li>No additional retention period applies - data is processed and immediately discarded</li>
-    </ul>
-
-    <div class="contact-info">
-        <h3>Contact Information</h3>
-        <p>For privacy-related questions or data deletion requests:</p>
-        <p>Email: <a href="mailto:kreg9da@gmail.com">kreg9da@gmail.com</a></p>
-        <p>App: ZodiacAI Finder - Astrology & Horoscope</p>
+    <div class="stars">
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
     </div>
 
-    <h2>Children's Privacy</h2>
-    <p>This app is not intended for children under 13. We do not knowingly collect personal information from children under 13.</p>
+    <div class="container">
+        <header class="header">
+            <h1>🔒 Privacy Policy</h1>
+            <p>ZodiacAI Finder - Your Cosmic Companion</p>
+            <p style="color: #94a3b8; font-size: 0.9rem;">Last Updated: October 16, 2025</p>
+        </header>
 
-    <h2>Changes to This Policy</h2>
-    <p>We may update this privacy policy from time to time. Users will be notified of any changes.</p>
+        <div class="meta-info">
+            <div class="meta-card">
+                <strong>App Name</strong>
+                ZodiacAI Finder - Astrology & Horoscope
+            </div>
+            <div class="meta-card">
+                <strong>Developer</strong>
+                kregg
+            </div>
+            <div class="meta-card">
+                <strong>Contact</strong>
+                kreg9da@gmail.com
+            </div>
+        </div>
+
+        <div class="content">
+            <section class="section">
+                <h2>📊 Data Collection</h2>
+                <p>ZodiacAI Finder collects the following types of user data to provide personalized astrology services:</p>
+                <ul>
+                    <li><strong>Personal Information:</strong> Optional name, birth date, birth time, and birth location (provided by user for astrology calculations)</li>
+                    <li><strong>User-Generated Content:</strong> Chat messages with AI, palm reading images</li>
+                    <li><strong>Device Information:</strong> Device details and app usage statistics (automatically sent with API requests)</li>
+                </ul>
+            </section>
+
+            <section class="section">
+                <h2>🎯 Data Usage</h2>
+                <p>Collected data is used solely for providing and improving our astrology services:</p>
+                <ul>
+                    <li>Providing personalized astrology readings, horoscopes, and AI-powered features</li>
+                    <li>App functionality and performance optimization</li>
+                    <li>Service improvement and technical support</li>
+                </ul>
+            </section>
+
+            <section class="section">
+                <h2>🤝 Data Sharing</h2>
+                <p>User data is shared with our AI processing partner:</p>
+                <div class="highlight-box">
+                    <p><strong>Pollination AI (text.pollinations.ai)</strong> - All user inputs are sent to Pollination AI for AI processing and generating astrology insights. Data is encrypted in transit (HTTPS) and not sold to third parties.</p>
+                    <p><em>Note: Some responses may appear in public feeds unless marked as private during processing.</em></p>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>🔐 Data Security</h2>
+                <p>We implement appropriate security measures to protect user data:</p>
+                <ul>
+                    <li>Data encrypted in transit using HTTPS</li>
+                    <li>Data encrypted at rest where applicable</li>
+                    <li>No permanent local storage of personal data</li>
+                    <li>Real-time processing with immediate data disposal</li>
+                </ul>
+            </section>
+
+            <section class="section contact-section" id="data-deletion">
+                <h2>🗑️ Data Deletion Request</h2>
+                <div class="highlight-box">
+                    <h3>How to Request Data Deletion</h3>
+                    <ol style="text-align: left; max-width: 600px; margin: 0 auto;">
+                        <li>Contact us at <a href="mailto:kreg9da@gmail.com">kreg9da@gmail.com</a> with the subject "Data Deletion Request - ZodiacAI Finder"</li>
+                        <li>Include your name (if provided) and any relevant details about your data</li>
+                        <li>We will process your request within 30 days</li>
+                    </ol>
+                </div>
+
+                <h3>What Happens When You Request Deletion</h3>
+                <ul style="text-align: left; max-width: 600px; margin: 1rem auto;">
+                    <li>Since ZodiacAI Finder does not store user data locally or on servers, no data is retained after real-time processing</li>
+                    <li>Data sent to Pollination AI for processing is handled according to their privacy practices</li>
+                    <li>We will confirm deletion and cease any further processing of your information</li>
+                    <li>No additional retention period applies - data is processed and immediately discarded</li>
+                </ul>
+            </section>
+
+            <section class="section">
+                <h2>👶 Children's Privacy</h2>
+                <p>This app is not intended for children under 13. We do not knowingly collect personal information from children under 13. If you believe we have collected information from a child under 13, please contact us immediately.</p>
+            </section>
+
+            <section class="section">
+                <h2>📝 Changes to This Policy</h2>
+                <p>We may update this privacy policy from time to time. Users will be notified of any significant changes through the app or our website.</p>
+            </section>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="index.html" class="back-link">← Back to ZodiacAI Finder</a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
